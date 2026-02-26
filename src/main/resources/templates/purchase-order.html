@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Purchase Order Page</h2>
+
+<a href="/dashboard">Back</a>
+
+<hr>
+
+<h3>Create Purchase Order</h3>
+
+<form th:action="@{/purchase-order}" method="post">
+    <input type="text" name="poNumber"
+           placeholder="PO Number" required/>
+    <button type="submit">Create</button>
+</form>
+
+<hr>
+
+<h3>All Purchase Orders</h3>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>PO Number</th>
+        <th>Status</th>
+    </tr>
+
+    <tr th:each="po : ${orders}">
+        <td th:text="${po.id}"></td>
+        <td th:text="${po.poNumber}"></td>
+        <td th:text="${po.status}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

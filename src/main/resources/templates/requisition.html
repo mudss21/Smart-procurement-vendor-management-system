@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Requisition Page</h2>
+
+<a href="/dashboard">Back</a>
+
+<hr>
+
+<h3>Create Requisition</h3>
+
+<form th:action="@{/requisition}" method="post">
+    <input type="text" name="requisitionNumber"
+           placeholder="Requisition Number" required/>
+    <button type="submit">Create</button>
+</form>
+
+<hr>
+
+<h3>All Requisitions</h3>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Requisition Number</th>
+        <th>Status</th>
+    </tr>
+
+    <tr th:each="req : ${requisitions}">
+        <td th:text="${req.id}"></td>
+        <td th:text="${req.requisitionNumber}"></td>
+        <td th:text="${req.status}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

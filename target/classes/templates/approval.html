@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h2>Approval Page</h2>
+
+<a href="/dashboard">Back</a>
+
+<hr>
+
+<h3>All Approvals</h3>
+
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Status</th>
+        <th>Approved At</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="app : ${approvals}">
+        <td th:text="${app.id}"></td>
+        <td th:text="${app.status}"></td>
+        <td th:text="${app.approvedAt} ?: '-'"></td>
+
+        <td>
+
+            <!-- APPROVE -->
+            <form th:action="@{/approval/update}" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${app.id}" />
+                <input type="hidden" name="status" value="APPROVED" />
+                <button type="submit">Approve</button>
+            </form>
+
+            <!-- REJECT -->
+            <form th:action="@{/approval/update}" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${app.id}" />
+                <input type="hidden" name="status" value="REJECTED" />
+                <button type="submit">Reject</button>
+            </form>
+
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

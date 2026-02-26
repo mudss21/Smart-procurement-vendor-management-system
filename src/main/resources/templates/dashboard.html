@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<h2>Welcome <span sec:authentication="name"></span></h2>
+
+<h3>Your Roles:</h3>
+<ul>
+    <li th:each="role : ${#authentication.authorities}"
+        th:text="${role}"></li>
+</ul>
+
+<hr>
+
+<div sec:authorize="hasAnyRole('ADMIN','PROCUREMENT_MANAGER')">
+    <a th:href="@{/vendor}">Vendor Management</a><br>
+</div>
+
+<div sec:authorize="hasAnyRole('ADMIN','EMPLOYEE','PROCUREMENT_MANAGER')">
+    <a th:href="@{/requisition}">Requisitions</a><br>
+</div>
+
+<div sec:authorize="hasAnyRole('ADMIN','PROCUREMENT_MANAGER')">
+    <a th:href="@{/purchase-order}">Purchase Orders</a><br>
+</div>
+
+<div sec:authorize="hasAnyRole('ADMIN','PROCUREMENT_MANAGER')">
+    <a th:href="@{/approval}">Approvals</a><br>
+</div>
+
+<br>
+<a th:href="@{/logout}">Logout</a>
+
+</body>
+</html>
