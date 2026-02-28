@@ -55,10 +55,6 @@ This project is a **vendor and procurement management system** designed to strea
 
 ---
 
-## 📜 Credits & Ownership
-- Originally developed by **Akanksha** (open-sourced under the MIT License)  
-- Enhanced, configured, and maintained by **Moham**  
 
-See `MIT_License` for full licensing details.
 
----
+
